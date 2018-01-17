@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,600,600italic,700,700italic|Inconsolata:400,700">
 		<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
-
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 		{% feed_meta %}
 		{% seo %}
 
@@ -67,14 +67,21 @@
 					{% endfor %}
 				</ul>
 
+				{% if site.repository_url %}
 				<ul>
-					<li class="nav-item top-level {% if page.url == '/changelog/' %}current{% endif %}">
-						{% assign changelog = site.html_pages | where: 'url', '/changelog/' | first %}
-						<a href="{{ site.baseurl }}/changelog/">{{ changelog.title }}</a>
-						{% if site.repository_url %}<a href="{{ site.repository_url }}"><strong>View On GitHub</strong></a>{% endif %}
+					<li class="nav-item top-level">
+						<table>
+							<tr>
+								<td><a class="github-button" href="{{ site.repository_url }}/fork" data-show-count="true" aria-label="Fork cststack/k8comp on GitHub">Fork</a></td>
+								<td><a class="github-button" href="{{ site.repository_url }}" data-show-count="true" aria-label="Star cststack/k8comp on GitHub">Star</a></td>
+								<td><a href="{{ site.repository_url }}"><img src="{{ site.baseurl }}/assets/images/view-on-github.png" width="70" height="40"></a></td>
+							</tr>
+						</table>
 					</li>
 				</ul>
+				{% endif %}
 			</nav>
+
 		</header>
 
 		<section class="main">
